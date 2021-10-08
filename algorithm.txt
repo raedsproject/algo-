@@ -1,0 +1,75 @@
+ALGOTITHME_checkDATA
+VAR 
+Set1, Set2:ARRAY_OF INTEGER[50]
+L,i,S,j,aucc:INTEGER
+
+BEGIN
+  Write('give the length of set1 1 and set2'); 
+  Read(L) ; 
+  FOR i FROM 0 TO L-1- DO
+       Read(Set1[i]);
+       Read(Set2[i] ;
+  END_FOR
+  S:=0 ; 
+  FOR i FROM 0 TO L-1 DO 
+     aucc:=0 ; 
+     FOR j FROM 0 TO L-1 DO 
+          IF Set1[i] = Set2[j] THEN 
+             aucc++ ; 
+          END_IF
+          IF aucc = 0 THEN 
+             S+=Set1[i] ; 
+            END_IF
+     END_FOR
+   END_FOR
+   FOR n FROM 0 TO L-1 DO 
+     aucc1:=0 ; 
+     FOR m FROM 0 TO L-1 DO 
+          IF Set2[n] = Set1[m] THEN 
+             aucc1++ ; 
+          END_IF
+          IF aucc1 = 0 THEN 
+             S+=Set2[n] ; 
+           END_IF 
+     END_FOR
+    END_FOR
+    Write (S,'is the sum ') ; 
+END . 
+///second solution /////
+ALGORITHM DATA_SECOND
+VAR
+   htab : HASH_TABLE<INTEGER,INTEGER>;
+   Set1, Set2,Set3:ARRAY_OF INTEGER[50] 
+   i,j,n S,count : INTEGER
+BEGIN
+  Write('give the length of set1 1 and set2')
+  Read(L)
+  FOR i FROM 0 TO L-1 DO
+       Read(Set1[i]);
+       Read(Set2[i] ;
+  END_FOR
+  FOR i FROM 0 TO L-1 DO 
+       Set3[i]:=Set1[i]
+       FOR j FROM L TO 2L-1 DO 
+       Set3[j]:=Set2[i]
+       END_FOR
+  END_FOR
+  FOR n FROM 0 TO 2L-1 STEP 1  DO
+       IF (htab.lookup(Set3[n]) = TRUE) THEN
+           count := htab.get(Set3[n]);
+           htab.insert(Set3[n],count+1);
+       ELSE
+           htab.insert(Set3[n],1);
+       END_IF
+   END_FOR
+  S:=0
+    FOR i FROM 0 TO Set3.length -1 STEP 1  DO
+       IF (htab.get(Set3[i]) > 1) THEN ()
+           S+=Set3[i];
+       END_IF
+   END_FOR
+   Write(S,"is the Sum")
+END . 
+** the next question **
+just we replace the (***) with 
+IF (htab.get(Set3[i]) = 1) THEN
